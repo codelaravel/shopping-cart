@@ -1,0 +1,22 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+i {
+  color: #50a3a2;
+}
+
+.badge {
+  background-color: #50a3a2;
+}
+.thumbnail img {
+  max-width: 150px;
+}
+.thumbnail .description {
+  color: #7f7f7f;
+}
+.price {
+  font-weight: bold;
+  font-size: 16px;
+}
