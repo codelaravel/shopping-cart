@@ -28,6 +28,7 @@
           </div>
           <div class="panel-footer">
             <strong>Total Price: ${{ $order->cart->totalPrice }}</strong>
+            <strong class="pull-right">{{ $order->created_at }}</strong>
           </div>
         </div>
       @endforeach

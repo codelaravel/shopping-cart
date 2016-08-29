@@ -1,4 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
@@ -19,4 +24,19 @@ i {
 .price {
   font-weight: bold;
   font-size: 16px;
+}
+
+div.quintity {
+
+  height: 40px;
+  width: 40px;
+  background-color: #50a3a2;
+  color: #fff;
+  padding: 10px 7px;
+  position: relative;
+  top: 24px;
+  left: 11px;
+}
+.quintity p {
+  text-align: center;
 }

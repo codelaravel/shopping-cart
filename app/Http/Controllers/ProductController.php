@@ -24,8 +24,15 @@ class ProductController extends Controller
 {
     public function getIndex()
     {
-      $products = Product::all();
+      // $products = Product::all();
+      $products = Product::paginate(9);
       return view('shop.index')->withProducts($products);
+    }
+
+    public function getSingleItem($id)
+    {
+      $product = Product::find($id);
+      return view('shop.single')->withProduct($product);
     }
 
     public function getAddToCart(Request $request, $id)
@@ -126,11 +133,59 @@ class ProductController extends Controller
         $order->payment_id = $charge->id;
 
         Auth::user()->orders()->save($order);
+        
+        // Update Product Qty
+        $order->cart = unserialize($order->cart);
+        foreach ($order->cart->items as $item) {
+          $id = $item['item']['id'];
+          $product = Product::find($id);
+          $product->qty -= $item['qty'];
+          $product->save();
+        }
+
       } catch(\Exception $e){
         return redirect()->route('checkout')->withError($e->getMessage());
       }
 
       Session::forget('cart');
       return redirect()->route('product.index')->withSuccess('Successfully purchased');
+    }
+
+    public function postAdminProductCreate(Request $request)
+    {
+
+      $product = new Product([
+        'imagePath' => $request->input('imagePath'),
+        'title'     => $request->input('title'),
+        'price'     => $request->input('price'),
+        'qty'     => $request->input('qty'),
+        'description' => $request->input('description')
+      ]);
+      $product->save();
+      Session::flash('flash_message','Product Created Successfully');
+      return redirect()->route('admin.all');
+    }
+
+    public function getAdminIndex()
+    {
+      $products = Product::paginate(9);
+      return view('admin.profile')->withProducts($products);
+    }
+
+    public function getProductUpdate(Request $request, $id)
+    {
+      $product = Product::find($id);
+      $product->qty = $request->input('qty');
+      $product->save();
+      Session::flash('flash_message','Product Quientity Update Successfully');
+      return redirect()->route('admin.all');
+    }
+
+    public function getProductDelete($id)
+    {
+      $product = Product::find($id);
+      $product->delete();
+      Session::flash('flash_message','Product Delete Successfully');
+      return redirect()->route('admin.all');
     }
 }

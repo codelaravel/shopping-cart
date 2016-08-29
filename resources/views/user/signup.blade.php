@@ -21,16 +21,16 @@
               @endforeach
           </div>
           @endif
-      		<form action="{{ route('user.signup') }}" method="post">
+      		<form action="{{ route('user.signup') }}" method="post" enctype="multipart/form-data">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" name="name" id="name" class="form-control" required>
+                  <input type="text" name="name" id="name" class="form-control" value="{{Request::old('name')}}" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" name="email" id="email" class="form-control" required>
+                  <input type="email" name="email" id="email" class="form-control" value="{{Request::old('email')}}" required>
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
@@ -40,7 +40,11 @@
                   <label for="confirmpassword">Confirm Password</label>
                   <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" required>
                 </div>
-            <button type="submit" class="btn btn-primary">Sign up</button>
+                <div class="form-group">
+                  <label>Update Profile Image</label>
+                  <input type="file" name="avatar">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign up</button>
                 {{ csrf_field() }}
         		</form>
             </div>

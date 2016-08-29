@@ -16,9 +16,18 @@ Route::get('/',[
   'as'    => 'product.index'
 ]);
 
+Route::get('/profile', function() {
+   return view('about');
+});
+
 Route::get('/add-to-cart/{id}', [
   'uses'  => 'ProductController@getAddToCart',
   'as'    => 'product.addToCart'
+]);
+
+Route::get('/single/{id}', [
+  'uses'  => 'ProductController@getSingleItem',
+  'as'    => 'product.single'
 ]);
 
 Route::get('/reduce/{id}', [
@@ -81,6 +90,33 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('/profile', [
       'uses'  => 'UserController@getProfile',
       'as'    => 'user.profile'
+    ]);
+
+    Route::get('/admin/profile', [
+      'uses'  => 'UserController@getAdminProfile',
+      'as'    => 'admin.profile'
+    ]);
+
+    Route::post('/admin/profile/create', [
+      'uses'  => 'ProductController@postAdminProductCreate',
+      'as'    => 'admin.product'
+    ]);
+
+    Route::get('/admin/profile/index', [
+      'uses' => 'ProductController@getAdminIndex',
+      'as'   => 'admin.all'
+    ]);
+
+    // For Update Qty
+    Route::get('admin/profile/index/update/{id}', [
+      'uses' => 'ProductController@getProductUpdate',
+      'as'   => 'product.update'
+    ]);
+
+    // For Delete Product
+    Route::get('admin/profile/index/delete/{id}', [
+      'uses'  => 'ProductController@getProductDelete',
+      'as'    => 'product.delete'
     ]);
 
     Route::get('/logout', [

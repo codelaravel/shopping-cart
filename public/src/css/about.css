@@ -1,0 +1,149 @@
+/* Variables */
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,700);
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+.border {
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+/* Layout */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.xv-center {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Styling */
+.header-title {
+  color: white;
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: table;
+  position: relative;
+}
+.header-title a {
+  color: white;
+  text-decoration: none;
+}
+.header-title h1 {
+  font-size: 3.5rem;
+  font-style: italic;
+}
+.header-title h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+.header-title .button {
+  margin: 1.5rem;
+  padding: 0.783rem;
+  transition: background 0.20s ease-in;
+  cursor: pointer;
+  display: inline-block;
+  transition: bacgkround 0.3s linear;
+}
+.header-title .button:hover, .header-title .button:focus {
+  /*background: rgba(255, 255, 255, 0.3);
+  text-shadow: 0px 0px 1px grey;*/
+}
+.header-title .link {
+  margin: 0.7rem;
+  padding: 0.783rem;
+  display: inline-block;
+  line-height: 1.566rem;
+  font-size: 1.4rem;
+  position: relative;
+}
+
+._avatar {
+  background-size: cover;
+  border-radius: 100%;
+  margin: 0 auto 0 auto;
+  width: 6rem;
+  height: 6rem;
+}
+
+._hgroup {
+  display: inline-block;
+  width: 250px;
+  height: 150px;
+  padding: 0.3em 1em 0.5em 1em;
+}
+
+._links {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+._links.__top {
+  top: 0;
+}
+._links.__bottom {
+  bottom: 0;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+/* Theme */
+.header-title-style-1 {
+  background-image: linear-gradient(to bottom right, rgba(211, 131, 18, 0.85), rgba(168, 50, 121, 0.85)), url('../../img/profile.JPG');
+}
+
+[data-tooltip] {
+  cursor: help;
+}
+[data-tooltip]:before {
+  font-size: 1rem;
+  content: attr(data-tooltip);
+  display: inline-block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border: 0px solid white;
+  white-space: nowrap;
+  width: auto;
+  left: -140%;
+  top: -152%;
+  padding: 0.783rem;
+  border-radius: 2px;
+  color: white;
+  opacity: 0;
+}
+[data-tooltip]:after {
+  content: "";
+  position: absolute;
+  bottom: 112%;
+  left: 2%;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid rgba(255, 255, 255, 0.3);
+  opacity: 0;
+}
+[data-tooltip]:after, [data-tooltip]:before {
+  transition: opacity 0.35s linear;
+}
+[data-tooltip]:hover:after, [data-tooltip]:hover:before {
+  opacity: 1;
+}

@@ -1,0 +1,19 @@
+.shopping-cart {
+width: 100%;
+}
+.shopping-cart td, .shopping-cart th {
+border: 1px solid #ccc;
+padding: 20px;
+}
+
+.product-image img {
+width: 100px;
+}
+
+.product-quantity input {
+width: 45px;
+}
+
+th:empty, td:empty {
+border: 0 !important;
+}
